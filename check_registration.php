@@ -24,15 +24,16 @@ else{
 
     if (mysqli_num_rows ($result1) == 0){
         if (mysqli_query ($connection, $sql2)){
-            echo "New registration: '" . $username . "'<br>";
+            include 'includes/new_registration.php';
         }
         else{
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            include 'includes/error.php';
+            
         }
 
     }
     else{
-        echo "You are not register! Please try again " . "<a href='registration.php'>registration</a>";
+        include 'includes/notregistered.php';
     }
 }
 

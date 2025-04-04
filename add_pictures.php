@@ -34,7 +34,7 @@ else{
 $target_dir = "uploads/";
 
 if (!empty ($_FILES["fileToUpload"]["name"])){
-   echo "fileToUpload " . $_FILES["fileToUpload"]["name"] . "<br>";
+   echo "The file to upload is: ... " . $_FILES["fileToUpload"]["name"] . "<br>";
    $target_file = $target_dir . basename ($_FILES["fileToUpload"]["name"]);
    $uploadOk = 1;
    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -64,12 +64,15 @@ if (!empty ($_FILES["fileToUpload"]["name"])){
        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
        $uploadOk = 0;
    }
+
    // Check if $uploadOk is set to 0 by an error
    if ($uploadOk == 0) {
        echo "Sorry, your file was not uploaded.";
        // if everything is ok, try to upload file
    } else {
-       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    
+       if (
+        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
            $picture_name = basename ($_FILES['fileToUpload']['name']);
            echo "The file ". $picture_name . " has been uploaded.";
            $username = $_SESSION['username'];
@@ -82,7 +85,7 @@ if (!empty ($_FILES["fileToUpload"]["name"])){
                    $sql2 = "INSERT INTO pictures (pictures_name, id_users) VALUES ('{$picture_name}', '{$users_id}')";
                    $result2 = mysqli_query ($connection, $sql2) or die (mysqli_error ($connection));
                    if ($result2){
-                       echo "New picture has added!";
+                       echo "New picture has been added!";
                    }
                    else{
                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);

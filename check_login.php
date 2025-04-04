@@ -21,13 +21,15 @@ else{
         while ($row = mysqli_fetch_assoc ($result)){
             $_SESSION['username'] = $row['users_username'];
             include 'includes/navbar.html';
-            echo "You are logged in with name '" . $row['users_username'] . "', please move on " . '<a href="pictures.php">pictures</a>';
+            include 'includes/logged.php';
+            
 	 
         }
     }
     else{
         include 'includes/navbar.html';
-        echo "You are not logged in. Please login " . "<a href='login.php'>here.</a>";
+        include 'includes/notlogged.php';
+        
     }
 }
 
