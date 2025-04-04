@@ -82,7 +82,7 @@ if (!empty ($_FILES["fileToUpload"]["name"])){
            if (mysqli_num_rows ($result1) > 0){
                while ($row = mysqli_fetch_assoc ($result1)){
                    $users_id = $row['users_id'];
-                   $sql2 = "INSERT INTO pictures (pictures_name, id_users) VALUES ('{$picture_name}', '{$users_id}')";
+                   $sql2 = "INSERT INTO pictures (pictures_name, id_users) VALUES ('$picture_name', '$users_id')";
                    $result2 = mysqli_query ($connection, $sql2) or die (mysqli_error ($connection));
                    if ($result2){
                        echo "New picture has been added!";
