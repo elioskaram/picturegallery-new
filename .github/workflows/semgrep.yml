@@ -6,6 +6,7 @@ on:
 
 jobs:
     semgrep_actions:
+        permissions: write-all
         name: Semgrep
         runs-on: ubuntu-latest
         container:
