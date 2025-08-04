@@ -9,7 +9,7 @@ include 'includes/header.html';
 include 'includes/navbar.html';
 
 if (!isset ($_SESSION ['username'])){
-	header('location: index.php');
+	header('location: index.php'); 
 }
 else{
     if (isset($_POST['pictures_name'])) {
